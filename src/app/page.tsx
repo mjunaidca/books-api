@@ -118,6 +118,7 @@ async function updateOrder() {
       'Authorization': `Bearer ${bearer.accessToken}`,
     },
     body: JSON.stringify(orderName),
+
   })
   console.log('sent request');
   if (!res.ok) {
@@ -140,7 +141,6 @@ async function singleOrder() {
       'Authorization': `Bearer ${bearer.accessToken}`,
     },
     cache: 'no-store', // Add this option
-
   })
 
   if (!res.ok) {
@@ -150,16 +150,18 @@ async function singleOrder() {
 
 }
 
+// I think it will start working as we build the applications
 async function deleteOrder() {
   const bearer = await clientToken();
   const orderId = await orderBook(); // Replace this with your orderId
 
-  const res = await fetch(`https://simple-books-api.glitch.me/orders/${orderId.orderId}`, {
+  const res = await fetch(`${url}/orders/${orderId.orderId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${bearer.accessToken}`,
     },
+    body: JSON.stringify(orderName),
   })
 
   console.log('requested for deletion ');
@@ -184,8 +186,8 @@ export default async function Home() {
   const newOrderName = await singleOrder();
   // const delOrderName = await deleteOrder();
 
-  console.log(orderedBooks);
-  console.log(newOrderName);
+  // console.log(orderedBooks);
+  // console.log(delOrderName);
 
   return (
     <div className='min-h-screen bg-black text-white px-14 py-10 justify-between items-center' >
