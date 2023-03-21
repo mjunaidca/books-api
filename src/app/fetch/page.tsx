@@ -29,8 +29,8 @@ async function getBook() {
 }
 
 // POST Register API Client
-async function clientToken() {
-    const res = await fetch(`https://simple-books-api.glitch.me/api-clients`, {
+async function clientToken({ registedUserData }: any) {
+    const res = await fetch(`${url}/api-clients`, {
         method: 'POST', // Specify the method
         headers: {
             // Specify the content type
@@ -43,7 +43,7 @@ async function clientToken() {
 
 // Order Book
 async function orderBook() {
-    const bearer = await clientToken();
+    const bearer = await clientToken({ registedUserData });
     const singleBook = await getBook();
 
     const orderData = {
@@ -72,7 +72,7 @@ async function orderBook() {
 
 //Get all Orders
 async function allOrders() {
-    const bearer = await clientToken();
+    const bearer = await clientToken({ registedUserData });
 
     const res = await fetch(`${url}/orders`, {
         method: 'GET', // Specify the method
@@ -92,7 +92,7 @@ async function allOrders() {
 
 // update Order Name Not WOrking
 async function updateOrder() {
-    const bearer = await clientToken();
+    const bearer = await clientToken({ registedUserData });
     const orderToken = await orderBook();
 
     // const orderName = {
@@ -118,7 +118,7 @@ async function updateOrder() {
 
 //single order all Orders
 async function singleOrder() {
-    const bearer = await clientToken();
+    const bearer = await clientToken({ registedUserData });
     const orderToken = await orderBook();
 
 
@@ -140,7 +140,7 @@ async function singleOrder() {
 
 // I think it will start working as we build the applications
 async function deleteOrder() {
-    const bearer = await clientToken();
+    const bearer = await clientToken({ registedUserData });
     const orderId = await orderBook(); // Replace this with your orderId
 
     const res = await fetch(`${url}/orders/${orderId.orderId}`, {

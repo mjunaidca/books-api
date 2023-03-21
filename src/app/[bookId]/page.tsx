@@ -1,15 +1,26 @@
 import { url, requestedBook } from "@/utils/variables";
+import Link from "next/link";
 
 // get single Book 
 async function getBook(bookId: number) {
-
     const res = await fetch(`${url}/books/${bookId}`)
+
     if (!res.ok) {
         throw new Error('Error in getting data about the book')
     }
 
     return res.json();
 }
+
+export async function generateStaticParams() {
+    const id: number[] = [1, 2, 3, 4, 5, 6];
+
+    return id.map((id) => ({
+        bookId: id,
+    }));
+}
+
+
 
 export default async function DisplayBook({ params }: { params: { bookId: number } }) {
 
@@ -30,7 +41,11 @@ export default async function DisplayBook({ params }: { params: { bookId: number
                     <div className="flex justify-between basis-1/5 flex-col w-full mx-auto">
                         <p>Price: ${book.price}</p>
                         <p>Stock: {book[`current-stock`]}</p>
-                        <button>Buy Now</button>
+                        <button>
+                            <Link href='/login'>
+                                Buy Now
+                            </Link>
+                        </button>
                     </div>
                 </div>
             </div>

@@ -10,13 +10,13 @@
         @apply bg-white text-left sm:text-center rounded-3xl flex flex-col w-full p-11 justify-between min-h-[50%] shadow-xl hover:scale-105 hover:duration-500;
       }
     .bookCard h1 {
-      @apply align-top text-2xl xl:text-3xl font-bold text-blue-500;
+      @apply align-top text-2xl xl:text-3xl font-bold text-green-500;
     }
     .bookCard p {
       @apply pt-4 pb-4 lg:pt-6 text-lg text-gray-800 font-semibold capitalize;
     }
     .bookCard button {
-        @apply before:text-lg text-gray-600 mx-auto hover:bg-blue-500 hover:scale-110 hover:text-white rounded-xl ring-2 ring-blue-600 py-1 px-2;
+        @apply before:text-lg text-gray-600 mx-auto hover:bg-green-500 hover:scale-110 hover:text-white rounded-xl ring-2 ring-green-600 py-1 px-2;
       }
 
     .bookCard span {

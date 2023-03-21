@@ -1,5 +1,6 @@
-import { url } from "@/utils/variables";
+import { url, registedUserData } from "@/utils/variables";
 import Link from "next/link";
+import { clientToken } from '../app/components/token'
 
 // get all Books
 async function getBooksList() {
@@ -12,6 +13,9 @@ async function getBooksList() {
 
 export default async function Home() {
   const booksList = await getBooksList();
+  const tokenID = await clientToken(registedUserData);
+  console.log(tokenID);
+  
 
   // const fictionBooks = booksList.filter((books: { id: string, type: string, name: 'string', avalible: boolean }) => books.type === 'fiction')
   // const nonFictionBooks = booksList.filter((books: { id: string, type: string, name: 'string', avalible: boolean }) => books.type === 'non-fiction')
