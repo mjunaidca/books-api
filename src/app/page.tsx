@@ -27,7 +27,7 @@ export default async function Home() {
         <div key={id} className="bookCard">
           <h1>{name}</h1>
           <p>{type} </p>
-          <button><Link href={`/${id}`} > Check Details </Link></button>
+          <button><Link href={`/book/${id}`} > Check Details </Link></button>
           {/* <button><Link href={`/${id}`} > Order Now </Link></button> */}
         </div>
       ))}

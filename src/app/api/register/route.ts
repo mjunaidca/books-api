@@ -1,15 +1,29 @@
-import { NextResponse } from 'next/server';
+import { url } from "@/utils/variables";
+import { NextResponse } from "next/server";
 
-export async function POST() {
-    const res = await fetch('https://data.mongodb-api.com/...', {
-        method: 'POST',
+export async function POST(request: Request) {
+    const data = await request.json();
+
+    const { clientName, clientEmail } = data;
+
+    console.log("Email", clientEmail);
+    console.log("Name", clientName);
+
+    const response = await fetch(`${url}/api-clients/`, {
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify({ time: new Date().toISOString() }),
+        body: JSON.stringify({
+            clientName,
+            clientEmail,
+        }),
     });
 
-    const data = await res.json();
 
-    return NextResponse.json(data);
+    const resData = await response.json();
+    console.log(`Res DATA:`, resData);
+
+    return NextResponse.json(resData)
+
 }
