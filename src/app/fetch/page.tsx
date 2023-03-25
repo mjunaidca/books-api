@@ -161,9 +161,6 @@ async function deleteOrder() {
 
 }
 
-
-
-
 export default async function Home() {
     const data = await getBooksMessage();
     const allBooks = await getBooksList();
