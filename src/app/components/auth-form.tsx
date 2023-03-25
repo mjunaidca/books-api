@@ -1,20 +1,34 @@
 // app/auth-form.tsx
 'use client';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
+import { url } from '@/utils/variables';
 
 export default function AuthForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [isPending, startTransition] = useTransition();
 
     const router = useRouter();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const isMutating = submitted || isPending;
+
+    const handleSubmit = async (e: React.FormEvent) => {
 
         e.preventDefault();
 
         setSubmitted(true);
+
+        await fetch(`${url}/api-clients`, {
+            method: 'PUT',
+            body: JSON.stringify({ clientName: name, clientEmail: email }),
+        });
+        setSubmitted(false);
+
+        startTransition(() => {
+            router.refresh();
+        });
 
     };
 

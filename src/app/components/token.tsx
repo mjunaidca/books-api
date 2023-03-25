@@ -1,17 +1,15 @@
 
-import { url, requestedBook, orderName, registedUserData } from "@/utils/variables";
+import { url } from "@/utils/variables";
 
-// welcome message
-export async function getBooksMessage() {
-    const res = await fetch(`${url}`);
-    if (!res.ok) {
-        throw new Error('')
-    }
-    return res.json();
+interface userData {
+    clientName: string,
+    clientEmail: string,
 }
 
 // POST Register API Client
-export async function clientToken({ registedUserData }: any) {
+
+export async function clientToken({ registedUserData }: { registedUserData: userData }) {
+
     const res = await fetch(`${url}/api-clients`, {
         method: 'POST', // Specify the method
         headers: {
@@ -22,3 +20,4 @@ export async function clientToken({ registedUserData }: any) {
     })
     return res.json();
 }
+

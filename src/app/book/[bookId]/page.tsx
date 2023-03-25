@@ -4,11 +4,9 @@ import Link from "next/link";
 // get single Book 
 async function getBook(bookId: number) {
     const res = await fetch(`${url}/books/${bookId}`)
-
     if (!res.ok) {
         throw new Error('Error in getting data about the book')
     }
-
     return res.json();
 }
 
@@ -25,8 +23,6 @@ export async function generateStaticParams() {
 export default async function DisplayBook({ params }: { params: { bookId: number } }) {
 
     const book = await getBook(params.bookId);
-    console.log(book);
-
 
     return (
         <div className="container m-4 max-w-2xl w-full">
