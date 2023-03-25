@@ -45,11 +45,10 @@ export default function AuthForm() {
 
   if (data) {
     console.log(`Client Token:`, data.accessToken);
-    window.localStorage.setItem(
-      `accessToken`,
-      JSON.stringify(data.accessToken)
-    );
-    window.localStorage.setItem(`name`, JSON.stringify(name));
+
+    window.localStorage.setItem(`accessToken`, data.accessToken);
+
+    window.localStorage.setItem(`name`, name);
   }
 
   const handleSubmit = async (e: React.FormEvent) => {

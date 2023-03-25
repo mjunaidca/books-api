@@ -1,5 +1,7 @@
 import { url } from "@/utils/variables";
 import { NextResponse } from "next/server";
+import { cookies } from 'next/headers';
+
 
 export async function POST(request: Request) {
     const data = await request.json();
@@ -23,6 +25,7 @@ export async function POST(request: Request) {
 
     const resData = await response.json();
     console.log(`Res DATA:`, resData);
+
 
     return NextResponse.json(resData)
 

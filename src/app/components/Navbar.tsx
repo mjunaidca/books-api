@@ -33,13 +33,13 @@ const Navbar = () => {
         <div className="space-x-4 py-4 sm:py-1 px-6 text-lg text-gray-300 ">
           <Link href="/">All Books</Link>
           <Link href="/login" className="hover:text-white">
-            Login
+            Get Token
           </Link>
           <Link href="/new-order" className="hover:text-white">
             Place Order
           </Link>
-          <Link href="/contact" className="hover:text-white">
-            Contact
+          <Link href="/all-orders" className="hover:text-white">
+            All Orders
           </Link>
         </div>
         <form
