@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import useSWR from "swr";
+import Link from "next/link";
 
 const fetcher = async ({
   bookId,
@@ -41,7 +41,6 @@ const fetcher = async ({
 const OrderPage = () => {
   const [bookId, setbookId] = useState("");
   const [callSWR, setCallSWR] = useState(false);
-  const router = useRouter();
 
   const isClient = typeof window !== "undefined";
   const bearer = isClient ? localStorage.getItem("accessToken") : null;
@@ -71,14 +70,6 @@ const OrderPage = () => {
     setCallSWR(true);
   };
 
-  const OrderPage = () => {
-    router.push(`./all-orders`);
-  };
-
-  const allBooks = () => {
-    router.push(`./`);
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="bg-white w-full max-w-lg p-8 rounded-xl shadow-md mx-4">
@@ -95,18 +86,18 @@ const OrderPage = () => {
                 {data ? `${data.orderId || data.error}` : `Loading...`}
               </p>
               <div className="flex items-center justify-center space-x-4">
-                <button
-                  onClick={allBooks}
+                <Link
+                  href="/"
                   className="SuccessButton px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-200"
                 >
-                  Browse More
-                </button>
-                <button
-                  onClick={OrderPage}
+                  Browse Books
+                </Link>
+                <Link
+                  href="/all-orders"
                   className="SuccessButton px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-200"
                 >
-                  View Orders
-                </button>
+                  All Orders
+                </Link>
               </div>
             </div>
           )}
