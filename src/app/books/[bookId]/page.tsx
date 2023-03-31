@@ -1,3 +1,4 @@
+import ClientButton from "@/components/ClientButton";
 import { url } from "@/utils/variables";
 import Link from "next/link";
 
@@ -23,39 +24,46 @@ export default async function DisplayBook({
 }: {
   params: { bookId: number };
 }) {
-  const book = await getBook(params.bookId);
+  const books = await getBook(params.bookId);
 
   return (
-    <div className="flex bg-gray-900 justify-center items-center h-screen">
-      {" "}
-      <div className="flex flex-col items-center justify-center bg-gray-100 p-4 rounded-lg shadow-lg relative">
-        {book.available ? null : ( // if the single is not available, show a red tag within the card
-          <div className="bg-red-500 text-white px-2 py-1 rounded-lg absolute top-0 right-0 m-2">
-            Out of stock
-          </div>
-        )}
-        <h2 className="text-3xl font-bold mb-4">{book.name}</h2>
-        <p className="text-lg text-gray-700 mb-2">Author: {book.author}</p>
-        <div className="flex flex-col text-lg md:text-xl justify-between space-y-4 w-full m-2">
-          <p>ISBN: {book.isbn ? book.isbn : "No ISBN"}</p>
-          <p>Type: {book.type}</p>
-          <p>Price: ${book.price}</p>
-          <p>Current Stock: {book[`current-stock`]}</p>
+    <div className="flex  bg-gray-900 justify-center items-center h-screen">
+      <div className="flex max-w-xs sm:max-w-md  md:max-w-lg w-full flex-col relative items-center justify-center bg-gray-100 p-4 rounded-lg shadow-lg ">
+        <div className=" top-0">
+          {books.available ? null : (
+            <div className="bg-red-500/30 text-white px-8 py-2 flex justify-items-start justify-start rounded-lg m-2">
+              Out of stock
+            </div>
+          )}
         </div>
-        <div className="flex justify-evenly w-full m-4 ">
-          {" "}
-          <button
-            className={
-              book.available
-                ? "bg-green-500 text-white px-4 py-2 rounded-lg" // only buy now button shall be light green
-                : "bg-gray-500 text-white px-4 py-2 rounded-lg" // if the single is not available, change the button color to gray
-            }
+        <div>
+          <h2 className="text-3xl font-bold mb-4">{books.name}</h2>
+          <p className="text-lg text-gray-700 mb-5">Author: {books.author}</p>
+        </div>
+
+        <div className="flex flex-col text-lg md:text-lg justify-between space-y-4 w-full m-2">
+          <p>
+            <b>ISBN:</b> {books.isbn ? books.isbn : "No ISBN"}
+          </p>
+          <p>
+            <b>Type:</b> {books.type}
+          </p>
+          <p>
+            <b>Price:</b> ${books.price}
+          </p>
+          <p>
+            <b>Current Stock:</b> {books[`current-stock`]}
+          </p>
+        </div>
+        <div className="flex flex-col justify-evenly w-full m-4 gap-1 ">
+          <Link
+            className="bg-blue-500 font-semibold text-white px-4 py-2 text-center rounded-lg hover:bg-blue-600 "
+            href="./login"
           >
-            Buy Now
-          </button>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+            {" "}
             Register
-          </button>
+          </Link>
+          <ClientButton />
         </div>
       </div>
     </div>

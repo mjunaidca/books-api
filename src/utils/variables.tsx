@@ -1,7 +1,5 @@
 export const url: string = `https://simple-books-api.glitch.me`;
 
-
-
 interface newName {
   customerName: string;
 }

@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Nav from "@/views/Navbar";
 import "./globals.css";
 
 export const metadata = {
@@ -14,8 +14,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <div>{children}</div>
+        <Nav />
+        <div className="bg-gray-900 min-h-screen h-full">{children}</div>
       </body>
     </html>
   );

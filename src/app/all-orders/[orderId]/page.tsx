@@ -2,6 +2,7 @@ import { url } from "@/utils/variables";
 import { OrderInfo } from "@/app/api/orderinfo/route";
 
 const SingleOrder = async ({ params }: { params: { orderId: string } }) => {
+  
   const isClient = typeof window !== "undefined";
 
   //   const bearer = isClient ? localStorage.getItem("accessToken") : null;

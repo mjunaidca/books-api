@@ -1,14 +1,7 @@
 
-import { url, requestedBook, orderName, registedUserData } from "@/utils/variables";
+import { url, orderName, } from "@/utils/variables";
 
-// welcome message
-async function getBooksMessage() {
-    const res = await fetch(`${url}`);
-    if (!res.ok) {
-        throw new Error('')
-    }
-    return res.json();
-}
+
 
 // get all Books
 async function getBooksList() {

@@ -55,6 +55,7 @@ export default function AuthForm() {
     e.preventDefault();
     // setSubmitted(true);
     setCallSWR(true);
+    router.refresh();
   };
 
   const goToLastPage = () => {
@@ -62,43 +63,57 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen ">
-      <form onSubmit={handleSubmit} className="userForm">
-        <h2>Register/Login</h2>
+    <div className="flex min-h-screen items-center justify-center">
+      <form
+        onSubmit={handleSubmit}
+        className="userForm bg-white p-8 rounded-lg shadow-md w-full max-w-md mx-8"
+      >
+        <h2 className="text-2xl font-bold mb-6 text-center">Register/Login</h2>
         {callSWR && (
-          <div className="SuccessText">
-            <p className="text-green-700">Your Authetication Key:</p>
-            <p>{data ? data.accessToken : `Loading...`}</p>
-            <button onClick={goToLastPage} className="SuccessButton">
+          <div className="SuccessText mb-6">
+            <p className="text-green-700 font-semibold">
+              Your Authentication Key:
+            </p>
+            <p className="mb-2">{data ? data.accessToken : `Loading...`}</p>
+            <button
+              onClick={goToLastPage}
+              className="SuccessButton px-4 py-2 bg-blue-500 text-white font-semibold rounded"
+            >
               Order Your Book
             </button>
           </div>
         )}
         <div className="mb-4">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name" className="block text-gray-700 mb-2">
+            Name
+          </label>
           <input
             id="name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="block text-gray-700 mb-2">
+            Email
+          </label>
           <input
             id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
           />
         </div>
         <div className="mb-6">
           <button
             type="submit"
             disabled={!name || !email}
-            className="SubmitButton"
+            className="SubmitButton w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Submit
           </button>
