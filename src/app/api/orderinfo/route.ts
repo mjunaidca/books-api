@@ -1,13 +1,15 @@
 import { url } from "@/utils/variables";
+import { NextResponse } from "next/server";
 
-export async function OrderInfo(orderId: string, bearer: string) {
+export async function OrderInfo(orderId: any, bearer: any) {
+
     const res = await fetch(`${url}/orders/${orderId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${bearer}`,
         },
-        cache: "no-store"
+        // cache: "no-store"
         // Add this option
     });
 
@@ -15,5 +17,8 @@ export async function OrderInfo(orderId: string, bearer: string) {
         throw new Error("Error in getting update order details");
     }
 
-    return res.json();
+    const response = await res.json();
+
+    return response
+
 }

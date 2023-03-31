@@ -74,7 +74,9 @@ export default function AuthForm() {
             <p className="text-green-700 font-semibold">
               Your Authentication Key:
             </p>
-            <p className="mb-2">{data ? data.accessToken : `Loading...`}</p>
+            <p className="mb-2">
+              {data ? `${data.accessToken || data.error}` : `Loading...`}
+            </p>
             <button
               onClick={goToLastPage}
               className="SuccessButton px-4 py-2 bg-blue-500 text-white font-semibold rounded"
