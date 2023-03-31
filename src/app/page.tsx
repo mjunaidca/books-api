@@ -1,5 +1,6 @@
 import { url } from "@/utils/variables";
 import Link from "next/link";
+import AllBooksCard from "@/components/AllBooksCard";
 // import { orderBook } from "../app/components/order-book";
 
 // get all Books
@@ -11,41 +12,35 @@ async function getBooksList() {
   return res.json();
 }
 
+type Props = {
+  id: string;
+  type: string;
+  name: string;
+  avalible: boolean;
+};
+
 export default async function Home() {
-  const booksList = await getBooksList();
+  const books = await getBooksList();
+  console.log(books);
+
   // const tokenID = await clientToken({ registedUserData });
 
   // const fictionBooks = booksList.filter((books: { id: string, type: string, name: 'string', avalible: boolean }) => books.type === 'fiction')
   // const nonFictionBooks = booksList.filter((books: { id: string, type: string, name: 'string', avalible: boolean }) => books.type === 'non-fiction')
 
   return (
-    <div className=" bookCardGrid">
-      {booksList.map(
-        ({
-          id,
-          type,
-          name,
-          avalible,
-        }: {
-          id: string;
-          type: string;
-          name: string;
-          avalible: boolean;
-        }) => (
-          <div key={id} className="bookCard">
-            <h1>{name}</h1>
-            <p>{type} </p>
-            <div className="flex flex-col gap-4">
-              <button>
-                <Link href={`/book/${id}`}> Check Details </Link>
-              </button>
-              <button>
-                <Link href={`./new-order`}> Order Now </Link>
-              </button>
+    <div className="bg-gray-900 flex container max-h-screen h-screen max-w-full w-full items-center justify-center overflow-y-auto">
+      <div className="flex flex-wrap items-center justify-center gap-8">
+        {books.map(
+          (
+            book: any // map over the books array and render a card component for each book
+          ) => (
+            <div key={book.id} className="flex basis-1/4 w-full">
+              <AllBooksCard book={book} />
             </div>
-          </div>
-        )
-      )}
+          )
+        )}
+      </div>
     </div>
   );
 }

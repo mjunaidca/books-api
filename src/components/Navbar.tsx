@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 py-3">
+    <nav className="bg-black py-3">
       <div className="max-w-7xl px-4 flex mx-auto space-x-4 flex-wrap justify-between">
         <div className="  flex-grow-0 sm:flex-grow">
           <Link

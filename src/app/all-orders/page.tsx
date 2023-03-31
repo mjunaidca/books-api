@@ -57,13 +57,17 @@ const AllOrders = () => {
           timestamp: number;
         }) => (
           <div key={id} className="bookCard">
-            <div className="bg-white shadow-md rounded-md p-4 border border-gray-200 mb-4">
-              <h3 className="text-xl font-semibold mb-2">Book ID: {bookId}</h3>
-              <p>Customer Name: {customerName}</p>
-              <p>Quantity: {quantity}</p>
-              <p>Time: {new Date(timestamp).toLocaleString()}</p>
-              <p>Order ID: {id}</p>
-            </div>
+            <Link href={`./all-orders/${id}`}>
+              <div className="bg-white shadow-md rounded-md p-4 border border-gray-200 mb-4">
+                <h3 className="text-xl font-semibold mb-2">
+                  Book ID: {bookId}
+                </h3>
+                <p>Customer Name: {customerName}</p>
+                <p>Quantity: {quantity}</p>
+                <p>Time: {new Date(timestamp).toLocaleString()}</p>
+                <p>Order ID: {id}</p>
+              </div>
+            </Link>
 
             <div className="flex flex-col gap-4">
               <button>
