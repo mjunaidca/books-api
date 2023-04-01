@@ -4,6 +4,7 @@ import Wrapper from "@/components/Wrapper";
 import useSWR from "swr";
 import { Loader } from "@/components/Loader";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const fetcher = async ({
   url,
@@ -46,6 +47,13 @@ const deleteOrder = async ({ url, bearer }: { url: string; bearer: any }) => {
 };
 
 const SingleOrder = ({ params }: { params: { id: string } }) => {
+  // const [name, setName] = useState("");
+  // const [nameStatus, setNameStatus] = useState(false);
+
+  // if (nameStatus) {
+  //   return <h1>Requestrf Name Update!</h1>;
+  // }
+
   const isClient = typeof window !== "undefined";
   const bearer = isClient ? localStorage.getItem("accessToken") : null;
   const myOrderId = params.id;
@@ -98,6 +106,12 @@ const SingleOrder = ({ params }: { params: { id: string } }) => {
     router.replace("./all-orders");
   }
 
+  // const handSubmit = async (e: any) => {
+  //   e.preventDefault();
+  //   setNameStatus(true);
+  //   console.log(name);
+  // };
+
   return (
     <Wrapper>
       <div className="text-gray-800 font-semibold bg-white p-6 rounded-xl max-w-sm w-full">
@@ -127,12 +141,21 @@ const SingleOrder = ({ params }: { params: { id: string } }) => {
             <b> Date & Time:</b> {new Date(data.timestamp).toLocaleString()}{" "}
           </div>
           <div className="flex flex-col gap-4 mt-4 md:gap-2">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-t-lg"
-              onClick={goBack}
-            >
-              Update Name
-            </button>
+            {/* <div className="flex justify-between rounded-lg py-2 items-center">
+              <textarea
+                className="bg-gray-100"
+                placeholder="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+                onClick={handSubmit}
+              >
+                Update Name
+              </button>
+            </div> */}
             <button
               onClick={() => Submit(data.id)}
               className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-b-lg focus:outline-none focus:shadow-outline transition-colors duration-200 w-full md:w-auto"
