@@ -22,20 +22,20 @@ const fetcher = async ({ url, bearer }: { url: string; bearer: string }) => {
 };
 
 // To Delete Single Order
-const deleteOrder = async ({ url, bearer }: { url: string; bearer: any }) => {
-  const res = await fetch(`${url}`, {
-    method: "DELETE", // Specify the method
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${bearer}`,
-    },
-  });
+// const deleteOrder = async ({ url, bearer }: { url: string; bearer: any }) => {
+//   const res = await fetch(`${url}`, {
+//     method: "DELETE", // Specify the method
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${bearer}`,
+//     },
+//   });
 
-  if (!res.ok) {
-    throw new Error("Error in Deleting order");
-  }
-  return res.json();
-};
+//   if (!res.ok) {
+//     throw new Error("Error in Deleting order");
+//   }
+//   return res.json();
+// };
 
 const AllOrders = () => {
   const isClient = typeof window !== "undefined";
@@ -66,22 +66,22 @@ const AllOrders = () => {
 
   console.log(data);
 
-  async function Submit(orderId: any) {
-    setDel(true);
-    console.log("Ca;; Deltete");
+  // async function Submit(orderId: any) {
+  //   setDel(true);
+  //   console.log("Ca;; Deltete");
 
-    try {
-      await deleteOrder({ url: `/api/delete/${orderId}`, bearer: bearer });
-      // <Loading />;
-      console.error("CLIENT side DELETE function:");
+  //   try {
+  //     await deleteOrder({ url: `/api/delete/${orderId}`, bearer: bearer });
+  //     // <Loading />;
+  //     console.error("CLIENT side DELETE function:");
 
-      router.refresh();
-      // mutate(`/api/allorders`); // Update the cache after deleting the order
-    } catch (error) {
-      console.error("Error deleting order:", error);
-    }
-    router.replace("./all-orders");
-  }
+  //     router.refresh();
+  //     // mutate(`/api/allorders`); // Update the cache after deleting the order
+  //   } catch (error) {
+  //     console.error("Error deleting order:", error);
+  //   }
+  //   router.replace("./all-orders");
+  // }
 
   return (
     <div className="flex flex-wrap px-8 justify-center items-center   max-h-screen h-full">
@@ -105,25 +105,32 @@ const AllOrders = () => {
                 <Link href={`./all-orders/${id}`}>
                   <div className="flex flex-col gap-2">
                     <h3 className="text-xl font-semibold  mb-4 text-gray-800">
-                      Book ID: {bookId}
+                      <b>Book ID:</b> {bookId}
                     </h3>
                     <p className="text-gray-700">
-                      Customer Name: {customerName ? customerName : "Anonymous"}
+                      <b>Customer Name:</b>{" "}
+                      {customerName ? customerName : "Anonymous"}
                     </p>
-                    <p className="text-gray-700">Quantity: {quantity}</p>
                     <p className="text-gray-700">
-                      Time: {new Date(timestamp).toLocaleString()}
+                      {" "}
+                      <b>Quantity:</b> {quantity}
                     </p>
-                    <p className="text-gray-700">Order ID: {id}</p>
+                    <p className="text-gray-700">
+                      <b>Time: </b> {new Date(timestamp).toLocaleString()}
+                    </p>
+                    <p className="text-gray-700">
+                      {" "}
+                      <b>Order ID: </b> {id}
+                    </p>
                   </div>
                 </Link>
                 <div className="flex flex-col gap-4 mt-4 md:gap-2">
-                  <button
+                  {/* <button
                     onClick={() => Submit(id)}
                     className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-colors duration-200 w-full md:w-auto"
                   >
                     Delete
-                  </button>
+                  </button> */}
                   <button
                     onClick={() => router.push(`./all-orders/${id}`)}
                     className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline transition-colors duration-200 w-full md:w-auto"
