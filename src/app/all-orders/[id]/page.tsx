@@ -75,6 +75,9 @@ const SingleOrder = ({ params }: { params: { id: string } }) => {
             <b> Book ID:</b> {data.bookId}{" "}
           </div>
           <div>
+            Customer Name: {data.customerName ? data.customerName : "Anonymous"}
+          </div>
+          <div>
             <b> Quantity:</b> {data.quantity}{" "}
           </div>
           <div>

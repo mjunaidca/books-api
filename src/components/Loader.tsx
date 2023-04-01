@@ -2,6 +2,6 @@ import React from "react";
 
 export const Loader = () => {
   return (
-    <div className="w-8 h-8 border-t-2 border-gray-400 border-solid rounded-full animate-spin"></div>
+    <div className="w-8 h-14 border-t-8 border-gray-500 border-solid rounded-3xl animate-bounce"></div>
   );
 };

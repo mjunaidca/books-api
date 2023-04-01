@@ -83,24 +83,31 @@ const OrderPage = () => {
         <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-4 text-gray-800">
           Order Confirmation
         </h2>
-        {callSWR && (
-          <div className="SuccessText mb-8 text-center">
-            <p className="text-green-600 font-semibold mb-1">
-              Your Order Status:
-            </p>
-            {data ? (
-              `${(data.orderId && "Order Placed!") || data.error}`
-            ) : (
-              <Loading />
-            )}
-
-            <div className="flex items-center text-sm md:text-base mt-4 justify-center space-x-8">
-              <RingButton href="/" text="Browse Books" />
-              <RingButton href="/all-orders" text=" View Orders" />
+        <div className="relative">
+          {callSWR && (
+            <div className="mb-8 text-center">
+              <p className="text-green-600 font-semibold mb-1">
+                Your Order Status:
+              </p>
+              {data ? (
+                `${(data.orderId && "Order Placed!") || data.error}`
+              ) : (
+                <div className="loader-wrapper relative">
+                  {" "}
+                  {/* Add a wrapper */}
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    {/* Set the loader's position to absolute and use z-index */}
+                    <Loading />
+                  </div>
+                </div>
+              )}
+              <div className="flex items-center text-sm md:text-base mt-4 justify-center space-x-8">
+                <RingButton href="/" text="Browse Books" />
+                <RingButton href="/all-orders" text="View Orders" />
+              </div>
             </div>
-          </div>
-        )}
-
+          )}
+        </div>
         <InputWithLabel
           label="Book ID"
           value={bookId}
