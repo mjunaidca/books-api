@@ -101,9 +101,9 @@ const OrderPage = () => {
                   </div>
                 </div>
               )}
-              <div className="flex items-center text-sm md:text-base mt-4 justify-center space-x-8">
-                <RingButton href="/" text="Browse Books" />
-                <RingButton href="/all-orders" text="View Orders" />
+              <div className="flex flex-wrap items-center text-sm md:text-base mt-4 justify-center space-x-2 md:space-x-8">
+                <RingButton href="/" text="Browse" />
+                <RingButton href="/all-orders" text="Orders" />
               </div>
             </div>
           )}

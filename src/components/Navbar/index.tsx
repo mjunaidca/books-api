@@ -1,7 +1,8 @@
 // components/Navbar.js
-
 import Link from "next/link";
 import SearchBar from "./searchbar";
+import HamburgerMenu from "./HamBurger";
+import { useState } from "react";
 
 const Nav = () => {
   return (
@@ -10,14 +11,18 @@ const Nav = () => {
         <div className=" flex gap-4 sm:gap-8 flex-grow-0 sm:flex-grow">
           <Link
             href="/"
-            className="hidden sm:block text-white text-2xl font-semibold"
+            className="text-white text-xl sm:text-2xl font-semibold"
           >
             Books API
           </Link>
-          <SearchBar />
+          <div className="hidden lg:block">
+            <SearchBar />
+          </div>
         </div>
 
-        <div className="space-x-4 py-4 sm:py-1 px-6 text-lg text-gray-300 ">
+        <HamburgerMenu />
+
+        {/* <div className="space-x-4 py-4 sm:py-1 px-6 text-lg text-gray-300 ">
           <Link href="/">All Books</Link>
           <Link href="/login" className="hover:text-white">
             Login
@@ -28,7 +33,7 @@ const Nav = () => {
           <Link href="/all-orders" className="hover:text-white">
             All Orders
           </Link>
-        </div>
+        </div> */}
       </div>
     </nav>
   );

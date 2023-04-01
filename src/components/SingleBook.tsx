@@ -25,7 +25,7 @@ const SingleBook = ({
   avalible,
 }: SingleBookProps) => {
   return (
-    <div className="flex flex-col justify-between max-w-sm w-full bg-gray-100 p-4 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 px-8 m-4">
+    <div className="flex flex-col justify-start -mt-10 sm:-mt-1 max-w-sm w-full bg-gray-100 p-4 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 px-3 sm:px-8 m-4">
       <div>
         <div className="flex justify-between items-center">
           <IconLabelText Icon={BsBookmarkCheck} Label="Book ID:" Text={id} />

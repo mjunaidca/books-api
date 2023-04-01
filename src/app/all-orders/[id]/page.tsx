@@ -76,7 +76,7 @@ const SingleOrder = ({ params }: { params: { id: string } }) => {
 
   if (!data) {
     return (
-      <div className="justify-center min-h-screen h-full items-center max-w-7xl w-full">
+      <div className="justify-center min-h-screen h-full -mt-10 sm:-mt-1 items-center max-w-7xl w-full">
         {" "}
         <Loader />{" "}
         {typeof data !== "undefined" ? `Data type: ${typeof data}` : ""}
