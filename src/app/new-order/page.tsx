@@ -53,7 +53,7 @@ const OrderPage = () => {
   const { data, error } = useSWR(
     callSWR
       ? {
-          url: `/api/order`,
+          url: `/api/placeorder`,
           clientName: name,
           bookId: bookId,
           token: bearer,
@@ -78,7 +78,7 @@ const OrderPage = () => {
     <div className="min-h-screen flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
-        className="bg-white w-full max-w-lg p-8 rounded-xl shadow-md mx-4"
+        className="bg-white w-full max-h-96 h-auto max-w-lg p-8 rounded-xl shadow-md mx-4"
       >
         <h2 className="text-2xl sm:text-3xl font-semibold text-center mb-4 text-gray-800">
           Order Confirmation

@@ -1,23 +1,20 @@
 import { API_URL } from "@/utils/variables";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: Request, { params }: { params: { slug: string } }) {
+
+    const orderId = params.slug;
 
     const bearer = request.headers.get('Authorization')
 
-    console.log("Token in API endpoint:", bearer);
+    console.log('Bearer in Slug', bearer);
 
-    const data = await request.json()
-
-    const { orderId } = data
-
-    console.log(orderId)
 
     const res = await fetch(`${API_URL}/orders/${orderId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${bearer}`,
+            Authorization: `${bearer}`,
         },
         // cache: "no-store"
         // Add this option
