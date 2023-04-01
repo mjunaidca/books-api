@@ -1,9 +1,9 @@
-import { url } from "@/utils/variables";
+import { API_URL } from "@/utils/variables";
 import { NextResponse } from "next/server";
 
 export async function OrderInfo(orderId: any, bearer: any) {
 
-    const res = await fetch(`${url}/orders/${orderId}`, {
+    const res = await fetch(`${API_URL}/orders/${orderId}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

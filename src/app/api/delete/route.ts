@@ -1,4 +1,4 @@
-import { url } from "@/utils/variables";
+import { API_URL } from "@/utils/variables";
 import { NextResponse } from "next/server";
 
 export async function DELETE(request: Request) {
@@ -9,7 +9,7 @@ export async function DELETE(request: Request) {
 
     const { orderId } = data;
 
-    const res = await fetch(`${url}/orders/${orderId}`, {
+    const res = await fetch(`${API_URL}/orders/${orderId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",

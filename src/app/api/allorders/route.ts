@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { url } from "@/utils/variables"
+import { API_URL } from "@/utils/variables"
 
 export async function GET(request: Request) {
 
@@ -8,7 +8,7 @@ export async function GET(request: Request) {
     console.log("Token in API endpoint:", bearer);
 
 
-    const res = await fetch(`${url}/orders`, {
+    const res = await fetch(`${API_URL}/orders`, {
         // method: 'GET',
         headers: {
             "Content-Type": "application/json",

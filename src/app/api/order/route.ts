@@ -1,4 +1,4 @@
-import { url } from "@/utils/variables";
+import { API_URL } from "@/utils/variables";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -11,7 +11,7 @@ export async function POST(request: Request) {
 
     const { clientName, bookId, } = data;
 
-    const response = await fetch(`${url}/orders`, {
+    const response = await fetch(`${API_URL}/orders`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

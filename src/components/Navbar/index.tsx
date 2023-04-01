@@ -20,7 +20,7 @@ const Nav = () => {
         <div className="space-x-4 py-4 sm:py-1 px-6 text-lg text-gray-300 ">
           <Link href="/">All Books</Link>
           <Link href="/login" className="hover:text-white">
-            Register
+            Login
           </Link>
           <Link href="/new-order" className="hover:text-white">
             Place Order

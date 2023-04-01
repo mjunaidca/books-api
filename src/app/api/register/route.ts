@@ -1,6 +1,5 @@
-import { url } from "@/utils/variables";
+import { API_URL } from "@/utils/variables";
 import { NextResponse } from "next/server";
-import { cookies } from 'next/headers';
 
 
 export async function POST(request: Request) {
@@ -11,7 +10,7 @@ export async function POST(request: Request) {
     console.log("Email", clientEmail);
     console.log("Name", clientName);
 
-    const response = await fetch(`${url}/api-clients/`, {
+    const response = await fetch(`${API_URL}/api-clients/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

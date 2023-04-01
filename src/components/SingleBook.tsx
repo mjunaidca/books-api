@@ -62,7 +62,7 @@ const SingleBook = ({
       </div>
       <div>
         <div>
-          <BlueButton href={`./login`} text={`Register`} />
+          <BlueButton href={`/login`} text={`Register`} />
         </div>
         <div>
           <ClientButton />
