@@ -1,6 +1,5 @@
-
-import { BlueButton } from "./BlueButton";
-import ClientButton from "./ClientButton";
+import { BlueButton } from "./Buttons/BlueButton";
+import ClientButton from "./Buttons/ClientButton";
 import { IconLabelText } from "./IconLabelText";
 import {
   BsBookmarkCheck,

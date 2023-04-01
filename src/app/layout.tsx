@@ -1,4 +1,4 @@
-import Nav from "@/views/Navbar";
+import Nav from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata = {
