@@ -19,10 +19,3 @@ export const IconLabelText = ({
   );
 };
 
-export const CardWrapper = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="w-full h-auto flex justify-between flex-col bg-gray-100 p-4 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 px-8">
-      {children}
-    </div>
-  );
-};
