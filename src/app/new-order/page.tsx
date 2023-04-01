@@ -1,5 +1,5 @@
 import React from "react";
-import OrderPage from "@/views/NewOrder";
+import OrderPage from "@/components/NewOrder";
 
 const NewOrder = () => {
   return (
