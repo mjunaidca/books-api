@@ -1,10 +1,10 @@
 import ClientButton from "@/components/ClientButton";
-import { url } from "@/utils/variables";
+import { API_URL } from "@/utils/variables";
 import Link from "next/link";
 
 // get single Book
 async function getBook(bookId: number) {
-  const res = await fetch(`${url}/books/${bookId}`);
+  const res = await fetch(`${API_URL}/books/${bookId}`);
   if (!res.ok) {
     throw new Error("Error in getting data about the book");
   }
