@@ -72,7 +72,8 @@ const AllOrders = () => {
                       Book ID: {bookId}
                     </h3>
                     <p className="text-gray-700">
-                      Customer Name: {customerName}
+                      Customer Name:{" "}
+                      {customerName ? "customerName" : "Anonymous"}
                     </p>
                     <p className="text-gray-700">Quantity: {quantity}</p>
                     <p className="text-gray-700">
